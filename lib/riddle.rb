@@ -10,3 +10,4 @@ class Riddle
     return @answer == answer
   end
 end
+
