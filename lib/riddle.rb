@@ -4,14 +4,18 @@ class Riddle
   @@riddles = {}
   @@total_rows = 0 
 
-  def self.all
-    @@riddles.values
-  end
-
   def initialize(text, answer, id = nil)
     @text = text
     @answer = answer
     @id = id
+  end
+
+  def self.all
+    @@riddles.values
+  end
+
+  def self.random
+    all.sample
   end
 
   def save 
