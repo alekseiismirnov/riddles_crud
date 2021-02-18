@@ -51,4 +51,28 @@ describe '#Riddle' do
       expect(Riddle.all).to eq [riddle, riddle2]
     end
   end
+
+  describe '#update' do
+    before :each do
+      @riddle_text = "Answer 'yes'"
+      @riddle_answer = "yes"
+
+      @riddle = Riddle.new(@riddle_text, @riddle_answer)
+    end
+
+    it 'changes the text of the riddle' do
+      @riddle.update(text: 'Such much?')
+      expect(@riddle.text).to eq 'Such much?'
+    end
+
+    it 'changes the answer of the riddle' do
+      @riddle.update(answer: 'How to whom')
+      expect(@riddle.correct? 'How to whom').to eq true
+    end
+
+    it 'answer update invalidates the old answer of the riddle' do
+      @riddle.update(answer: 'Such much?')
+      expect(@riddle.correct? @riddle_answer).to eq false
+    end
+  end
 end

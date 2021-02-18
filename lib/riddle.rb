@@ -30,5 +30,10 @@ class Riddle
   def == another_riddle
     (self.text == another_riddle.text) and (self.answer == another_riddle.answer)
   end
+
+  def update updates={}
+    @text = updates[:text] or @text
+    @answer = updates[:answer] or @answer 
+  end
 end
 
