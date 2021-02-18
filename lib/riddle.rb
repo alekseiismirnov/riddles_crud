@@ -7,7 +7,7 @@ class Riddle
   def initialize(text, answer, id = nil)
     @text = text
     @answer = answer
-    @id = id
+    @id = id || @@total_rows += 1
   end
 
   def self.all
@@ -18,8 +18,11 @@ class Riddle
     all.sample
   end
 
+  def self.clear
+    @@riddles = {}
+  end
+
   def save 
-    id = self.id || @@total_rows += 1
     @@riddles[id] = Riddle.new(self.text, self.answer, id)
   end
 
@@ -34,6 +37,10 @@ class Riddle
   def update updates={}
     @text = updates[:text] or @text
     @answer = updates[:answer] or @answer 
+  end
+
+  def delete
+    @@riddles.delete @id
   end
 end
 

@@ -17,6 +17,13 @@ describe '#Riddle' do
     end
   end
 
+  describe '.clear' do
+    it 'removes all records from the store' do
+      Riddle.clear
+      expect(Riddle.all).to eq []
+    end
+  end
+
   describe "#text" do
     it 'returns text of the riddle' do
       expect(@riddle.text).to eq @riddle_text
@@ -75,4 +82,14 @@ describe '#Riddle' do
       expect(@riddle.correct? @riddle_answer).to eq false
     end
   end
+
+  describe '#delete' do
+    it 'removes record from the store' do
+      Riddle.clear
+      @riddle.save
+      @riddle.delete
+      expect(Riddle.all).to eq []
+    end
+  end
+
 end
