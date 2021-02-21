@@ -49,3 +49,20 @@ get '/third' do
   end
 end
 
+get '/riddles' do 
+  @riddles = Riddle.all
+
+  erb :riddles
+end
+
+get '/riddles/new' do
+  erb :new_riddle
+end
+
+post '/riddles' do
+  Riddle.new(params[:riddle_text], params[:riddle_answer])
+    .save
+  @riddles = Riddle.all
+  erb :riddles
+end
+

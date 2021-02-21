@@ -1,0 +1,11 @@
+<h2> Scrooll Of All Riddles</h2>
+<% if @riddles.any? %>
+  <ul>
+    <% @riddles.each do |riddle| %>
+      <li><%= riddle.text %> </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p> There is nothing to show here </p>
+<% end %>
+<a href="/riddles/new">Add New Riddle</a>

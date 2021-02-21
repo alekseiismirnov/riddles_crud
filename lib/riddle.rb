@@ -19,6 +19,7 @@ class Riddle
   end
 
   def self.clear
+    @@total_rows = 0
     @@riddles = {}
   end
 

@@ -5,6 +5,8 @@ require 'riddle'
 
 describe '#Riddle' do
   before :each do
+    Riddle.clear
+
     @riddle_text = "Answer 'yes'"
     @riddle_answer = "yes"
 
