@@ -67,6 +67,6 @@ post '/riddles' do
 end
 
 get '/riddles/:id' do
-  @riddle = Riddle.new('Stub?', 'Answer stub')
+  @riddle = Riddle.find params[:id].to_i
   erb :riddle_view
 end
