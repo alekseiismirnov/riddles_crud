@@ -70,3 +70,17 @@ get '/riddles/:id' do
   @riddle = Riddle.find params[:id].to_i
   erb :riddle_view
 end
+
+# individual riddle update form
+get '/riddles/:id/edit' do
+  @riddle = Riddle.find params[:id].to_i
+
+  erb :riddle_edit
+end
+
+patch '/riddles/:id' do
+  @riddle = Riddle.find params[:id].to_i
+  @riddle.update(text: params[:riddle_text], answer: params[:riddle_answer])
+
+  erb :riddle_view
+end

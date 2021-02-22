@@ -1,0 +1,15 @@
+<h2> Update Riddle </h2>
+<form action="/riddles/<%= @riddle.id %>" method="post">
+  <div class="form-group">
+    <input name="_method" type="hidden" value="patch">
+    <label for="riddle_text">Text:</label>
+    <input id="riddle_text" name="riddle_text" value="<%= @riddle.text %>" class="form-control" type="text">
+  </div>
+
+  <div class="form-group">
+    <label for="riddle_answer">Answer:</label>
+    <input id="riddle_answer" name="riddle_answer" value="<% @riddle.answer %>" class="form-control" type="text">
+  </div>
+
+  <button type="submit" class="btn">Update!</button>
+</form>
