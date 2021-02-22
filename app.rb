@@ -84,3 +84,12 @@ patch '/riddles/:id' do
 
   erb :riddle_view
 end
+
+delete '/riddles/:id' do
+  riddle = Riddle.find params[:id].to_i
+  riddle.delete
+
+  @riddles = Riddle.all
+
+  erb :riddles
+end
