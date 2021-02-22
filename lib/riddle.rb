@@ -23,6 +23,10 @@ class Riddle
     @@riddles = {}
   end
 
+  def self.find id
+    @@riddles[id]
+  end
+
   def save 
     @@riddles[id] = Riddle.new(self.text, self.answer, id)
   end

@@ -2,7 +2,7 @@
 <% if @riddles.any? %>
   <ul>
     <% @riddles.each do |riddle| %>
-      <li><%= riddle.text %> </li>
+      <li><a href="/riddles/<%=riddle.id %>"> <%= riddle.text %> </a></li>
     <% end %>
   </ul>
 <% else %>

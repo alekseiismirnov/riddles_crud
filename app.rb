@@ -66,3 +66,7 @@ post '/riddles' do
   erb :riddles
 end
 
+get '/riddles/:id' do
+  @riddle = Riddle.new('Stub?', 'Answer stub')
+  erb :riddle_view
+end

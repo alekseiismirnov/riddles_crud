@@ -26,6 +26,17 @@ describe '#Riddle' do
     end
   end
 
+  describe '.find' do
+    it 'doesn`t find not saved riddle' do
+      expect(Riddle.find @riddle.id).to eq(nil)
+    end
+
+    it 'finds riddle in db by id' do
+      @riddle.save
+      expect(Riddle.find @riddle.id).to eq(@riddle)
+    end
+  end
+
   describe "#text" do
     it 'returns text of the riddle' do
       expect(@riddle.text).to eq @riddle_text
