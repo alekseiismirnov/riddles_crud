@@ -3,6 +3,7 @@ class Riddle
 
   @@riddles = {}
   @@total_rows = 0 
+  @@current_id =nil
 
   def initialize(text, answer, id = nil)
     @text = text
@@ -14,9 +15,18 @@ class Riddle
     @@riddles.values
   end
 
+  # There is no way to make a random riddle task
+  # but keep the state of the Riddle class.
+  # We'll return riddle with the .random
+  # every time the same, untill we call .randomize or delete this riddle
   def self.random
-    all.sample
+    return @@riddles[@@current_id]
   end
+
+  def self.randomize
+    @@current_id = @@riddles.keys.sample unless @@riddles == {}
+  end
+  # ---------- 
 
   def self.clear
     @@total_rows = 0
@@ -48,4 +58,3 @@ class Riddle
     @@riddles.delete @id
   end
 end
-

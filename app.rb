@@ -7,11 +7,15 @@ require 'sinatra/reloader'
 also_reload 'lib/**/*.rb'
 
 get '/' do
+  Riddle.new('Stop! What... is your name?', 'Sir Lancelot of Camelot').save
+  Riddle.new('What... is your quest?', 'To seek the Holy Grail').save
+  Riddle.new('What... is your favorite color?', 'Blue').save
+
   erb :scene_open
 end
 
 get '/first' do
-  @riddle = Riddle.new('Stop! What... is your name?', 'Sir Lancelot of Camelot')
+  @riddle = Riddle.random 
   if params[:answer]
     if @riddle.correct? params[:answer]
       erb :to_second
@@ -19,25 +23,29 @@ get '/first' do
       erb :wrong
     end
   else 
+    Riddle.randomize
+    @riddle = Riddle.random
     erb :first
   end
 end
 
 get '/second' do
-  @riddle = Riddle.new('What... is your quest?', 'To seek the Holy Grail')
+  @riddle = Riddle.random 
   if params[:answer]
     if @riddle.correct? params[:answer]
       erb :to_third
     else
       erb :wrong
     end
-  else
+  else 
+    Riddle.randomize
+    @riddle = Riddle.random
     erb :second
   end
 end
 
 get '/third' do
-  @riddle = Riddle.new('What... is your favorite color?', 'Blue')
+  @riddle = Riddle.random
   if params[:answer]
     if @riddle.correct? params[:answer]
       erb :all_correct
@@ -45,6 +53,8 @@ get '/third' do
       erb :wrong
     end
   else
+    Riddle.randomize
+    @riddle = Riddle.random
     erb :third
   end
 end
