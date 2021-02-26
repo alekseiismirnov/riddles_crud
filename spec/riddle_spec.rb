@@ -105,4 +105,13 @@ describe '#Riddle' do
     end
   end
 
+  describe '#hint' do
+    it 'gives a kind of hint when answer is long enought' do
+      expect(Riddle.new('Question', 'Long-long answer').hint).to eq 'Lon...'
+    end
+
+    it 'asks to think again when answer is short' do
+      expect(Riddle.new('Question', 'Sho').hint).to eq 'Really?'
+    end
+  end
 end

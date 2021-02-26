@@ -57,4 +57,12 @@ class Riddle
   def delete
     @@riddles.delete @id
   end
+
+  def hint
+    if @answer.length >= 4
+      return "#{@answer[0,3]}..."
+    else
+      return 'Really?'
+    end
+  end
 end
