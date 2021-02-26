@@ -1,3 +1,6 @@
+<% if @hint %>
+  <p><%= @hint %></p>
+<% end %>
 <p> <%=@riddle.text%> </p>
 <form action="/first" method="get">
   <div class="form-group">

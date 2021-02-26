@@ -20,7 +20,13 @@ get '/first' do
     if @riddle.correct? params[:answer]
       erb :to_second
     else
-      erb :wrong
+      unless @riddle.hinted?
+        @hint = @riddle.hint
+
+        erb :first
+      else
+        erb :wrong
+      end
     end
   else 
     Riddle.randomize
