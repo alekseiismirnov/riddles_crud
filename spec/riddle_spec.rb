@@ -114,4 +114,20 @@ describe '#Riddle' do
       expect(Riddle.new('Question', 'Sho').hint).to eq 'Really?'
     end
   end
+
+  describe '#hinted' do
+    it 'is false, if no hint was given before' do
+      expect(@riddle.hinted?).to eq false
+    end
+
+    it 'is true, if hint was given before' do
+      @riddle.hint
+      expect(@riddle.hinted?).to eq true
+    end
+
+    it 'is true, if hint was given more then one time' do
+      2.times { @riddle.hint }
+      expect(@riddle.hinted?).to eq true
+    end
+  end
 end

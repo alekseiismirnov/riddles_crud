@@ -9,6 +9,8 @@ class Riddle
     @text = text
     @answer = answer
     @id = id || @@total_rows += 1
+    
+    @hinted = false
   end
 
   def self.all
@@ -59,10 +61,15 @@ class Riddle
   end
 
   def hint
+    @hinted = true
     if @answer.length >= 4
       return "#{@answer[0,3]}..."
     else
       return 'Really?'
     end
+  end
+
+  def hinted? 
+    return @hinted
   end
 end
